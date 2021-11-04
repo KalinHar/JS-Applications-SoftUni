@@ -1,0 +1,27 @@
+[
+    {
+        "img":"https://www.ikea.com/PIAimages/0447583_PE597395_S5.JPG",
+        "name": "Sofa",
+        "price": "259",
+        "decFactor":"0.4"
+
+    },
+    {
+        "img":"https://www.stylespafurniture.com/wp-content/uploads/2020/03/Cove_3_Door_Wardrobe_1.jpg",
+        "name": "Wardrobe",
+        "price": "120",
+        "decFactor":"1.2"
+    },
+    {
+        "img":"https://m.media-amazon.com/images/I/61Un3r6QLhL._SL1000_.jpg",
+        "name": "Table Set",
+        "price": "320",
+        "decFactor":"1.6"
+    },
+    {
+        "img":"https://static.vitra.com/media/asset/2992325/storage/v_fullbleed_1440x/41999448.jpg",
+        "name": "Virtual Office",
+        "price": "420",
+        "decFactor":"1.8"
+    }
+]
