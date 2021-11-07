@@ -10,7 +10,6 @@ async function onRegForm(e) {
     const email = formData.get('email').trim();
     const password = formData.get('password').trim();
     const rePass = formData.get('rePass').trim();
-    console.log(email, password, rePass)
     try {
         if ([email, password, rePass].some(v => v == "")) {
             throw new Error('Fill in all fields!');

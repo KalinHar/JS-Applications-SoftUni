@@ -31,11 +31,11 @@ async function sumOrders() {
             throw new Error(error.message);
         }
         let orders = await res.json();
-        console.log(orders);
         orders = orders.filter(o => o._ownerId == userData.id);
-        console.log(orders)
+  
         let orderSum = 0;
         const totalProds = [] 
+        
         Object.values(orders).forEach(o => {
             Object.keys(o).forEach(k => {
                 if (!k.startsWith('_')) {

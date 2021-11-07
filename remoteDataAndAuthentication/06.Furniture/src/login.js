@@ -6,7 +6,6 @@ async function onLogin(e) {
     const data = new FormData(e.target);
     const email = data.get('email');
     const password = data.get('password');
-    console.log(email, password)
     try {
         const res = await fetch('http://localhost:3030/users/login', {
             method: 'post',
@@ -20,7 +19,6 @@ async function onLogin(e) {
             throw new Error(error.message);
         }
         const user = await res.json();
-        console.log(user);
         const userData = {
             id: user._id,
             email: user.email,
