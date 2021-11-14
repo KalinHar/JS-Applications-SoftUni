@@ -21,18 +21,15 @@ loadItems();
 
 async function sumOrders() {
     try {
-        // THIS SORT BY OWNER ID DON'T WORK AS EXPECTED ! => SOLVED: GET ALL ORDERS AND SORT MANUALY.
-        // const res = await fetch(`http://localhost:3030/data/orders?where=_ownerId%3D${userData.id}`, {
-        //     headers: {'X-Authorization': userData.token}
-        // });
-        const res = await fetch('http://localhost:3030/data/orders');
+        const res = await fetch(`http://localhost:3030/data/orders?where=_ownerId%3D"${userData.id}"`, {
+            headers: {'X-Authorization': userData.token}
+        });
         if (res.ok != true) {
             const error = await res.json();
             throw new Error(error.message);
         }
-        let orders = await res.json();
-        orders = orders.filter(o => o._ownerId == userData.id);
-  
+        const orders = await res.json();
+
         let orderSum = 0;
         const totalProds = [] 
         
@@ -51,7 +48,7 @@ async function sumOrders() {
     }
 }
 
-// If need remove product from store after buy it.
+// If need remove product from store after buy it, use this code:
 
 // async function dellPoduct(id) {
 //     console.log(id)
@@ -100,7 +97,7 @@ async function buyProduct() {
         alert(err.message);
     }
     
-// If need remove product from store after buy it.
+// If need remove product from store after buy it, use this code:
 
     // const prodIds = products.map(p => p.id); // if need remove product from store.
     // for (let id of prodIds) {
