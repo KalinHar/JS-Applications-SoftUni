@@ -10,6 +10,7 @@ import { editPage } from "./views/edit.js";
 import { searchPage } from "./views/search.js";
 
 const root = document.querySelector('main');
+const navBtns = document.querySelectorAll('li')
 document.querySelector('#logoutBtn').addEventListener('click', onLogout);
 
 page(decorateContext);
@@ -35,17 +36,9 @@ function decorateContext(ctx, next) {
 function updateNav() {
     const user = getUserData();
     if (user) {
-        document.querySelector('.user-log').style.display = 'inline-block';
-        document.querySelector('.user-cr').style.display = 'inline-block';
-        document.querySelector('.guest-log').style.display = 'none';
-        document.querySelector('.guest-reg').style.display = 'none';
-        // document.querySelector('.user span').textContent = `Welcome ${user.email}`;
-
+        [...navBtns].map(b => b.className.includes('user') ? b.style.display = 'inline-block' : b.style.display = 'none');
     } else {
-        document.querySelector('.user-log').style.display = 'none';
-        document.querySelector('.user-cr').style.display = 'none';
-        document.querySelector('.guest-log').style.display = 'inline-block';
-        document.querySelector('.guest-reg').style.display = 'inline-block';
+        [...navBtns].map(b => b.className.includes('guest') ? b.style.display = 'inline-block' : b.style.display = 'none');
     }
 }
 
