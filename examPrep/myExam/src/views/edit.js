@@ -45,20 +45,13 @@ export async function editPage(ctx) {
         ev.preventDefault();
 
         const formData = new FormData(ev.target);
-        const name = formData.get('name').trim();
-        const imgUrl = formData.get('imgUrl').trim();
-        const price = formData.get('price').trim();
-        const releaseDate = formData.get('releaseDate').trim();
-        const artist = formData.get('artist').trim();
-        const genre = formData.get('genre').trim();
-        const description = formData.get('description').trim();
-        console.log({name, imgUrl, price, releaseDate, artist, genre, description})
+        const data = [...formData.entries()].reduce((a, [k, v]) => Object.assign(a, {[k]: v.trim()}), {});
 
-        if (name == '' || price == '' || releaseDate == '' || artist == '' || genre == '' ||description == '' || imgUrl == '') {
+        if (Object.values(data).some(v => v == '')) {
             return alert("Fill all fields!");
         }
 
-        await updateThis({name, imgUrl, price, releaseDate, artist, genre, description}, ctx.params.id);
+        await updateThis(data, ctx.params.id)
         ctx.page.redirect(`/details/${ctx.params.id}`);
     }
 }

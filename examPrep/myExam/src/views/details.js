@@ -32,7 +32,6 @@ const detailsTempl = (item, onDelete, isOwner) => html`
 
 export async function detailsPage(ctx) {
     const item = await getById(ctx.params.id);
-    console.log(item)
 
     const user = getUserData();
     const isOwner = user && user.id == item._ownerId;
